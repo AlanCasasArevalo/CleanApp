@@ -3,9 +3,9 @@ import XCTest
 
 class RemoteAddAccount {
     private let urlToCall: URL
-    private let httpClient: HttpClientProtocol
+    private let httpClient: HttpPostClientProtocol
 
-    init(urlToCall: URL, httpClient: HttpClientProtocol) {
+    init(urlToCall: URL, httpClient: HttpPostClientProtocol) {
         self.urlToCall = urlToCall
         self.httpClient = httpClient
     }
@@ -15,13 +15,13 @@ class RemoteAddAccount {
     }
 }
 
-protocol HttpClientProtocol {
+protocol HttpPostClientProtocol {
     func post(urlToCall: URL)
 }
 
 class RemoteAddAccountTest: XCTestCase {
     
-    class HttpClientSpy: HttpClientProtocol {
+    class HttpClientSpy: HttpPostClientProtocol {
         var urlToCall: URL?
 
         func post(urlToCall: URL) {
