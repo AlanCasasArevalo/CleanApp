@@ -10,7 +10,7 @@ class RemoteAddAccount {
         self.httpClient = httpClient
     }
     
-    func addAccount(){
+    func addAccount(addAccountModel: AddAccountModelRequest){
         httpClient.post(urlToCall: urlToCall)
     }
 }
@@ -26,6 +26,13 @@ class RemoteAddAccountTest: XCTestCase {
         let sut = RemoteAddAccount(urlToCall: urlToCall, httpClient: httpClientSpy)
         sut.addAccount()
         XCTAssertEqual(httpClientSpy.urlToCall, urlToCall)
+    }
+    
+    func test_add_should_call_httpClient_with_correct_data () {
+        let httpClientSpy = HttpClientSpy()
+        let sut = RemoteAddAccount(urlToCall: URL(string: "www.any_url.com")!, httpClient: httpClientSpy)
+        sut.addAccount()
+        XCTAssertEqual(httpClientSpy.data, data)
     }
 }
 
