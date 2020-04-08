@@ -51,13 +51,13 @@ extension RemoteAddAccountTest {
         return (sut, httpClientSpy)
     }
     
-    func expectationTest(_ sut: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: ()-> Void) {
+    func expectationTest(_ sut: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
         let expect = expectation(description: "waiting")
         sut.addAccount(addAccountModel: makeAddAccountModelRequest()) { receivedResult in
             switch (expectedResult, receivedResult) {
-            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError)
-            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount)
-            default: XCTFail("Expected \(expectedResult) received \(receivedResult) instead")
+            case (.failure(let expectedError), .failure(let receivedError)): XCTAssertEqual(expectedError, receivedError, file: file, line: line)
+            case (.success(let expectedAccount), .success(let receivedAccount)): XCTAssertEqual(expectedAccount, receivedAccount, file: file, line: line)
+            default: XCTFail("Expected \(expectedResult) received \(receivedResult) instead", file: file, line: line)
             }
             expect.fulfill()
         }
