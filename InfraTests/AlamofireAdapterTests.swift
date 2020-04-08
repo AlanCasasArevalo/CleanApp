@@ -33,6 +33,7 @@ class AlamofireAdapterTests: XCTestCase {
         let expect = expectation(description: "waiting")
         UrlProtocolStub.observerRequest { request in
             XCTAssertEqual(urlToCall, request.url)
+            XCTAssertEqual("POST", request.httpMethod)
             expect.fulfill()
         }
         
