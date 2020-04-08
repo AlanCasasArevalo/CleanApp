@@ -16,24 +16,26 @@ class AlamofireAdapter {
         self.session = session
     }
     
-    func post (to urlToCall: URL) {
-        session.request(urlToCall, method: .post).resume()
+    func post (to urlToCall: URL, with data: Data?) {
+        let json = try? JSONSerialization.jsonObject(with: data!, options: .allowFragments) as? Parameters
+        session.request(urlToCall, method: .post, parameters: json, encoding: JSONEncoding.default).resume()
     }
 }
 class AlamofireAdapterTests: XCTestCase {
 
-    func test_ () {
+    func test_post_should_make_request_with_valid_url_and_method () {
         let urlToCall = makeUrl()
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.protocolClasses = [UrlProtocolStub.self]
         let session = Session(configuration: sessionConfiguration)
         let sut = AlamofireAdapter(session: session)
-        sut.post(to: urlToCall)
+        sut.post(to: urlToCall, with: makeValidData())
         
         let expect = expectation(description: "waiting")
         UrlProtocolStub.observerRequest { request in
             XCTAssertEqual(urlToCall, request.url)
             XCTAssertEqual("POST", request.httpMethod)
+            XCTAssertNotNil(request.httpBodyStream)
             expect.fulfill()
         }
         
