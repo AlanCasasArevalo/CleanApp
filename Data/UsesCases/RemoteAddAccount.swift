@@ -24,7 +24,9 @@ public final class RemoteAddAccount: AddAccountProtocol {
             case .success(let data):
                 if let model: AccountModel = data.toModel() {
                     completationHandler(.success(model))
-                } 
+                } else {
+                    completationHandler(.failure(.unexpected))
+                }
             case .failure: completationHandler(.failure(.unexpected))
             }
         }
