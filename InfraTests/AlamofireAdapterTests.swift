@@ -25,29 +25,18 @@ class AlamofireAdapterTests: XCTestCase {
 
     func test_post_should_make_request_with_valid_url_and_method () {
         let urlToCall = makeUrl()
-        let sut = makeSut()
-        sut.post(to: urlToCall, with: makeValidData())        
-        let expect = expectation(description: "waiting")
-        UrlProtocolStub.observerRequest { request in
+        
+        testRequestFor(url: urlToCall, data: makeValidData()) { request in
             XCTAssertEqual(urlToCall, request.url)
             XCTAssertEqual("POST", request.httpMethod)
             XCTAssertNotNil(request.httpBodyStream)
-            expect.fulfill()
         }
-        
-        wait(for: [expect], timeout: 2)
     }
     
     func test_post_should_make_request_with_no_data () {
-        let sut = makeSut()
-        sut.post(to: makeUrl(), with: nil)
-        let expect = expectation(description: "waiting")
-        UrlProtocolStub.observerRequest { request in
+        testRequestFor(url: makeUrl(), data: nil) { request in
             XCTAssertNil(request.httpBodyStream)
-            expect.fulfill()
         }
-        
-        wait(for: [expect], timeout: 2)
     }
 }
 
@@ -59,6 +48,18 @@ extension AlamofireAdapterTests {
         let sut = AlamofireAdapter(session: session)
 
         return sut
+    }
+    
+    func testRequestFor (url: URL, data: Data?, actionToDo: @escaping (URLRequest) -> Void) {
+        let sut = makeSut()
+        sut.post(to: url, with: data)
+        let expect = expectation(description: "waiting")
+        UrlProtocolStub.observerRequest { request in
+            actionToDo(request)
+            expect.fulfill()
+        }
+        
+        wait(for: [expect], timeout: 2)
     }
 }
 
