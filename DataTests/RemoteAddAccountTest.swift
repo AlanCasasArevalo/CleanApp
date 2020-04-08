@@ -8,7 +8,7 @@ class RemoteAddAccount {
 class RemoteAddAccountTest: XCTestCase {
 
     func test_() {
-        let sut = RemoteAddAccount()
+        let sut = RemoteAddAccount(urlToCall: url)
     }
 }
 
