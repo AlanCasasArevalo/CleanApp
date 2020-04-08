@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		515955FF243DC74400721BFA /* AddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515955FE243DC74400721BFA /* AddAccount.swift */; };
+		515955FF243DC74400721BFA /* AddAccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515955FE243DC74400721BFA /* AddAccountProtocol.swift */; };
 		51595601243DC97000721BFA /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595600243DC97000721BFA /* AccountModel.swift */; };
 		51595603243DC9A200721BFA /* AddAccountModelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595602243DC9A200721BFA /* AddAccountModelRequest.swift */; };
 		51595612243DCA5A00721BFA /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51595609243DCA5A00721BFA /* Data.framework */; };
@@ -50,7 +50,7 @@
 /* Begin PBXFileReference section */
 		515955F6243DC63400721BFA /* Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		515955F9243DC63400721BFA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		515955FE243DC74400721BFA /* AddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccount.swift; sourceTree = "<group>"; };
+		515955FE243DC74400721BFA /* AddAccountProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountProtocol.swift; sourceTree = "<group>"; };
 		51595600243DC97000721BFA /* AccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountModel.swift; sourceTree = "<group>"; };
 		51595602243DC9A200721BFA /* AddAccountModelRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountModelRequest.swift; sourceTree = "<group>"; };
 		51595609243DCA5A00721BFA /* Data.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Data.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,7 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				515955F9243DC63400721BFA /* Info.plist */,
-				515955FE243DC74400721BFA /* AddAccount.swift */,
+				515955FE243DC74400721BFA /* AddAccountProtocol.swift */,
 				51595600243DC97000721BFA /* AccountModel.swift */,
 				51595602243DC9A200721BFA /* AddAccountModelRequest.swift */,
 			);
@@ -290,7 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				515955FF243DC74400721BFA /* AddAccount.swift in Sources */,
+				515955FF243DC74400721BFA /* AddAccountProtocol.swift in Sources */,
 				51595603243DC9A200721BFA /* AddAccountModelRequest.swift in Sources */,
 				51595601243DC97000721BFA /* AccountModel.swift in Sources */,
 			);
