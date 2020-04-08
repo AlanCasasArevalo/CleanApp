@@ -41,14 +41,23 @@ class RemoteAddAccountTest: XCTestCase {
             httpClientSpy.completeWithData(makeInvalidData())
         })
     }
+    
 }
 
 extension RemoteAddAccountTest {
     
-    func makeSut(urlToCall: URL = URL(string: "www.any_url.com")!) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
+    func makeSut(urlToCall: URL = URL(string: "www.any_url.com")!, file: StaticString = #file, line: UInt = #line) -> (sut: RemoteAddAccount, httpClientSpy: HttpClientSpy) {
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(urlToCall: urlToCall, httpClient: httpClientSpy)
+        checkMemoryLeak(for: sut, file: file, line: line)
+        checkMemoryLeak(for: httpClientSpy, file: file, line: line)
         return (sut, httpClientSpy)
+    }
+    
+    func checkMemoryLeak (for instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, file: file, line: line)
+        }
     }
     
     func expectationTest(_ sut: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
