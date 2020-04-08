@@ -18,6 +18,8 @@
 		510E7296243E292C009138C6 /* AlamofireAdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510E7295243E292C009138C6 /* AlamofireAdapterTests.swift */; };
 		510E729F243E2B49009138C6 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51595609243DCA5A00721BFA /* Data.framework */; };
 		510E72A0243E2B49009138C6 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51595609243DCA5A00721BFA /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		510E72A4243E2BE3009138C6 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
+		510E72A5243E2C09009138C6 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1D2243E228D00CD1595 /* TestFactory.swift */; };
 		515955FF243DC74400721BFA /* AddAccountProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515955FE243DC74400721BFA /* AddAccountProtocol.swift */; };
 		51595601243DC97000721BFA /* AccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595600243DC97000721BFA /* AccountModel.swift */; };
 		51595603243DC9A200721BFA /* AddAccountModelRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595602243DC9A200721BFA /* AddAccountModelRequest.swift */; };
@@ -546,6 +548,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				510E72A5243E2C09009138C6 /* TestFactory.swift in Sources */,
+				510E72A4243E2BE3009138C6 /* Test+CheckMemoryLeak.swift in Sources */,
 				510E7296243E292C009138C6 /* AlamofireAdapterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
