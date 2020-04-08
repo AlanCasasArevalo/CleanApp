@@ -13,6 +13,11 @@ func makeInvalidData () -> Data {
     return data
 }
 
+func makeValidData () -> Data {
+    let data = Data("{ \"name\" : \"Alan\" }".utf8)
+    return data
+}
+
 func makeUrl () -> URL {
     let urlToCall = URL(string: "www.google.com")!
     return urlToCall
