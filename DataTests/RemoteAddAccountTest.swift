@@ -12,7 +12,8 @@ class RemoteAddAccount {
     }
     
     func addAccount(addAccountModel: AddAccountModelRequest){
-        httpClient.post(to: urlToCall, with: nil)
+        let data = try? JSONEncoder().encode(addAccountModel)
+        httpClient.post(to: urlToCall, with: data)
     }
 }
 
