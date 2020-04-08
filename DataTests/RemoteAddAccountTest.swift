@@ -1,10 +1,14 @@
 
 import XCTest
 
+class RemoteAddAccount {
+    
+}
+
 class RemoteAddAccountTest: XCTestCase {
 
     func test_() {
-        let remoteAddAccount = RemoteAddAccount()
+        let sut = RemoteAddAccount()
     }
 }
 
