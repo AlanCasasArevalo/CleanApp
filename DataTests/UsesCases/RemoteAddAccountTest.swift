@@ -20,19 +20,24 @@ class RemoteAddAccountTest: XCTestCase {
         XCTAssertEqual(httpClientSpy.data, addAccountModelRequest.toData())
     }
     
-    func test_add_should_complete_with_error_if_client_fails () {
+    func test_add_should_complete_with_error_if_client_complete_with_fails () {
         let (sut, httpClientSpy) = makeSut()
         // Se necesita hacer una nueva variable de expectation debido a que usamos test con respuestas asincronas
         let expect = expectation(description: "waiting")
-        sut.addAccount(addAccountModel: makeAddAccountModelRequest()) { error in
-            XCTAssertEqual(error, .unexpected)
+        sut.addAccount(addAccountModel: makeAddAccountModelRequest()) { result in
+            switch result {
+            case .success(_): XCTFail("Expected error receive \(result) instead")
+            case .failure(let error):
+                XCTAssertEqual(error, .unexpected)
+            }
             // Aqui hacemos que se libere la espera de la respuesta asincrona
             expect.fulfill()
         }
         httpClientSpy.completeWithError(.noConnectivityError)
-        // Aqui hacemos que espere la respuesta asincrona, de no estar recibiendo los callbacks correspondientes se fallaria el test. 
+        // Aqui hacemos que espere la respuesta asincrona, de no estar recibiendo los callbacks correspondientes se fallaria el test.
         wait(for: [expect], timeout: 5)
     }
+
 }
 
 extension RemoteAddAccountTest {
@@ -52,16 +57,16 @@ extension RemoteAddAccountTest {
 
         var urlsToCall = [URL]()
         var data: Data?
-        var completationHandler: ((HttpError) -> Void)?
+        var completationHandler: ((Result<Data, HttpError>) -> Void)?
         
-        func post(to urlToCall: URL, with data: Data?, completationHandler: @escaping (HttpError) -> Void) {
+        func post(to urlToCall: URL, with data: Data?, completationHandler: @escaping (Result<Data, HttpError>) -> Void) {
             self.urlsToCall.append(urlToCall)
             self.data = data
             self.completationHandler = completationHandler
         }
         
         func completeWithError (_ error: HttpError) {
-            completationHandler?(error)
+            completationHandler?(.failure(error))
         }
     }
 }
