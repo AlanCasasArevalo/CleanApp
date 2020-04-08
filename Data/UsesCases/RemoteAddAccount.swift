@@ -20,7 +20,13 @@ public final class RemoteAddAccount: AddAccountProtocol {
     
     public func addAccount(addAccountModel: AddAccountModelRequest, completationHandler: @escaping (Result<AccountModel, DomainError>) -> Void) {
         httpClient.post(to: urlToCall, with: addAccountModel.toData()) { result in
-            completationHandler(.failure(.unexpected))
+            switch result {
+            case .success(let data):
+                if let model: AccountModel = data.toModel() {
+                    completationHandler(.success(model))
+                } 
+            case .failure: completationHandler(.failure(.unexpected))
+            }
         }
     }
 }
