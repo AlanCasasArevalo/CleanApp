@@ -12,12 +12,12 @@ class RemoteAddAccount {
     }
     
     func addAccount(addAccountModel: AddAccountModelRequest){
-        httpClient.post(urlToCall: urlToCall)
+        httpClient.post(to: urlToCall, with: nil)
     }
 }
 
 protocol HttpPostClientProtocol {
-    func post(urlToCall: URL)
+    func post(to urlToCall: URL, with data: Data?)
 }
 
 class RemoteAddAccountTest: XCTestCase {
@@ -42,9 +42,11 @@ class RemoteAddAccountTest: XCTestCase {
 extension RemoteAddAccountTest {
     class HttpClientSpy: HttpPostClientProtocol {
         var urlToCall: URL?
-
-        func post(urlToCall: URL) {
+        var data: Data?
+        
+        func post(to urlToCall: URL, with data: Data?) {
             self.urlToCall = urlToCall
+            self.data = data
         }
         
     }
