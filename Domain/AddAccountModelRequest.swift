@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct AddAccountModelRequest {
+public struct AddAccountModelRequest: Encodable {
     public var name: String
     public var email: String
     public var password: String
