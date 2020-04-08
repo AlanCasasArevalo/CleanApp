@@ -31,7 +31,7 @@ class RemoteAddAccountTest: XCTestCase {
     func test_() {
         let urlToCall = URL(string: "www.any_url.com")!
         let httpClient = HttpClientSpy()
-        let sut = RemoteAddAccount(urlToCall: urlToCall)
+        let sut = RemoteAddAccount(urlToCall: urlToCall, httpClient: HttpClientProtocol)
         sut.addAccount()
         XCTAssertEqual(httpClient.urlToCall, urlToCall)
     }
