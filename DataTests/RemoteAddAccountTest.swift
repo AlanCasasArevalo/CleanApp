@@ -35,6 +35,7 @@ class RemoteAddAccountTest: XCTestCase {
         let sut = RemoteAddAccount(urlToCall: URL(string: "www.any_url.com")!, httpClient: httpClientSpy)
         let addAccountModelRequest = AddAccountModelRequest(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
         sut.addAccount(addAccountModel: addAccountModelRequest)
+        let data = try? JSONEncoder().encode(addAccountModelRequest)
         XCTAssertEqual(httpClientSpy.data, data)
     }
 }
