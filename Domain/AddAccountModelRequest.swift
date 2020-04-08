@@ -1,9 +1,9 @@
 
 import Foundation
 
-struct AddAccountModelRequest {
-    var name: String
-    var email: String
-    var password: String
-    var passwordConfirmation: String
+public struct AddAccountModelRequest {
+    public var name: String
+    public var email: String
+    public var password: String
+    public var passwordConfirmation: String
 }
