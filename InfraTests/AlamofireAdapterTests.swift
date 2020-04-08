@@ -41,12 +41,12 @@ class AlamofireAdapterTests: XCTestCase {
 }
 
 extension AlamofireAdapterTests {
-    func makeSut () -> AlamofireAdapter {
+    func makeSut (file: StaticString = #file, line: UInt = #line) -> AlamofireAdapter {
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.protocolClasses = [UrlProtocolStub.self]
         let session = Session(configuration: sessionConfiguration)
         let sut = AlamofireAdapter(session: session)
-
+        checkMemoryLeak(for: sut, file: file, line: line)
         return sut
     }
     
