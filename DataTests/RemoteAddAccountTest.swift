@@ -20,17 +20,7 @@ protocol HttpPostClientProtocol {
 }
 
 class RemoteAddAccountTest: XCTestCase {
-    
-    class HttpClientSpy: HttpPostClientProtocol {
-        var urlToCall: URL?
-
-        func post(urlToCall: URL) {
-            self.urlToCall = urlToCall
-        }
-        
-    }
-
-    func test_() {
+    func test_add_should_call_httpClient_with_correct_url () {
         let urlToCall = URL(string: "www.any_url.com")!
         let httpClientSpy = HttpClientSpy()
         let sut = RemoteAddAccount(urlToCall: urlToCall, httpClient: httpClientSpy)
@@ -39,7 +29,16 @@ class RemoteAddAccountTest: XCTestCase {
     }
 }
 
+extension RemoteAddAccountTest {
+    class HttpClientSpy: HttpPostClientProtocol {
+        var urlToCall: URL?
 
+        func post(urlToCall: URL) {
+            self.urlToCall = urlToCall
+        }
+        
+    }
+}
 
 
 
