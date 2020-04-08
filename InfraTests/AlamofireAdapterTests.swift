@@ -17,7 +17,7 @@ class AlamofireAdapter {
     }
     
     func post (to urlToCall: URL) {
-        session.request(urlToCall).resume()
+        session.request(urlToCall, method: .post).resume()
     }
 }
 class AlamofireAdapterTests: XCTestCase {
