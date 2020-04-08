@@ -25,7 +25,7 @@ class RemoteAddAccountTest: XCTestCase {
         var urlToCall: URL?
 
         func post(urlToCall: URL) {
-
+            self.urlToCall = urlToCall
         }
         
     }
