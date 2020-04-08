@@ -65,12 +65,6 @@ extension RemoteAddAccountTest {
         return (sut, httpClientSpy)
     }
     
-    func checkMemoryLeak (for instance: AnyObject, file: StaticString = #file, line: UInt = #line) {
-        addTeardownBlock { [weak instance] in
-            XCTAssertNil(instance, file: file, line: line)
-        }
-    }
-    
     func expectationTest(_ sut: RemoteAddAccount, completeWith expectedResult: Result<AccountModel, DomainError>, when action: ()-> Void, file: StaticString = #file, line: UInt = #line) {
         let expect = expectation(description: "waiting")
         sut.addAccount(addAccountModel: makeAddAccountModelRequest()) { receivedResult in
@@ -85,46 +79,11 @@ extension RemoteAddAccountTest {
         wait(for: [expect], timeout: 3)
     }
     
-    func makeInvalidData () -> Data {
-        let data = Data("invalid_data".utf8)
-        return data
-    }
-    
-    func makeUrl () -> URL {
-        let urlToCall = URL(string: "www.google.com")!
-        return urlToCall
-    }
-    
     func makeAddAccountModelRequest () -> AddAccountModelRequest {
         let addAccountModelRequest = AddAccountModelRequest(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
         return addAccountModelRequest
     }
-    
-    func makeAccountModel () -> AccountModel {
-        let accountModel = AccountModel(id: "any_id", name: "any_name", email: "any_email", password: "any_password")
-        return accountModel
-    }
-    
-    class HttpClientSpy: HttpPostClientProtocol {
-        
-        var urlsToCall = [URL]()
-        var data: Data?
-        var completationHandler: ((Result<Data, HttpError>) -> Void)?
-        
-        func post(to urlToCall: URL, with data: Data?, completationHandler: @escaping (Result<Data, HttpError>) -> Void) {
-            self.urlsToCall.append(urlToCall)
-            self.data = data
-            self.completationHandler = completationHandler
-        }
-        
-        func completeWithError (_ error: HttpError) {
-            completationHandler?(.failure(error))
-        }
-        
-        func completeWithData (_ data: Data) {
-            completationHandler?(.success(data))
-        }
-    }
+
 }
 
 
