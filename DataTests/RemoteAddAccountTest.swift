@@ -7,6 +7,10 @@ class RemoteAddAccount {
     init(urlToCall: URL) {
         self.urlToCall = urlToCall
     }
+    
+    func addAccount(){
+        
+    }
 }
 
 protocol HttpClientProtocol {
@@ -28,6 +32,7 @@ class RemoteAddAccountTest: XCTestCase {
         let urlToCall = URL(string: "www.any_url.com")!
         let httpClient = HttpClientSpy()
         let sut = RemoteAddAccount(urlToCall: urlToCall)
+        sut.addAccount()
         XCTAssertEqual(httpClient.urlToCall, urlToCall)
     }
 }
