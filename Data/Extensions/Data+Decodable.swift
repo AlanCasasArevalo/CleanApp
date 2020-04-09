@@ -8,9 +8,14 @@
 
 import Foundation
 
-extension Data {
+public extension Data {
     func toModel<T: Decodable> () -> T? {
         let model = try? JSONDecoder().decode(T.self, from: self)
         return model
+    }
+    
+    func toJson () -> [String: Any]? {
+        let dictionaryToReturn = try? JSONSerialization.jsonObject(with: self, options: .allowFragments) as? [String: Any]
+        return dictionaryToReturn
     }
 }
