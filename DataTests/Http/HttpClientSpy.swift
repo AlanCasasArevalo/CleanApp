@@ -10,22 +10,22 @@ import Foundation
 import Data
 
 class HttpClientSpy: HttpPostClientProtocol {
-       
-       var urlsToCall = [URL]()
-       var data: Data?
-       var completationHandler: ((Result<Data, HttpError>) -> Void)?
-       
-       func post(to urlToCall: URL, with data: Data?, completationHandler: @escaping (Result<Data, HttpError>) -> Void) {
-           self.urlsToCall.append(urlToCall)
-           self.data = data
-           self.completationHandler = completationHandler
-       }
-       
-       func completeWithError (_ error: HttpError) {
-           completationHandler?(.failure(error))
-       }
-       
-       func completeWithData (_ data: Data) {
-           completationHandler?(.success(data))
-       }
-   }
+    
+    var urlsToCall = [URL]()
+    var data: Data?
+    var completionHandler: ((Result<Data?, HttpError>) -> Void)?
+    
+    func post(to urlToCall: URL, with data: Data?, completionHandler: @escaping (Result<Data?, HttpError>) -> Void) {
+        self.urlsToCall.append(urlToCall)
+        self.data = data
+        self.completionHandler = completionHandler
+    }
+    
+    func completeWithError (_ error: HttpError) {
+        completionHandler?(.failure(error))
+    }
+    
+    func completeWithData (_ data: Data) {
+        completionHandler?(.success(data))
+    }
+}
