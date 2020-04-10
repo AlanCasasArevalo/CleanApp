@@ -18,6 +18,11 @@ func makeValidData () -> Data {
     return data
 }
 
+func makeEmptyData () -> Data {
+    let data = Data()
+    return data
+}
+
 func makeUrl () -> URL {
     let urlToCall = URL(string: "www.google.com")!
     return urlToCall
