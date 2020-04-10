@@ -27,3 +27,8 @@ func makeError() -> Error{
     let error = NSError(domain: "any_error", code: 0)
     return error
 }
+
+func makeHttpResponse(statusCode: Int = 200) -> HTTPURLResponse {
+    let response = HTTPURLResponse(url: makeUrl(), statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+    return response
+}
