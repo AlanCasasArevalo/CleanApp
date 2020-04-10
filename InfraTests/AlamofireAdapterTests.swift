@@ -10,24 +10,44 @@ import XCTest
 import Data
 import Alamofire
 
-class AlamofireAdapter {
+class AlamofireAdapter: HttpPostClientProtocol {
+    
     private let session: Session
     
     init(session: Session = .default) {
         self.session = session
     }
     
-    func post (to urlToCall: URL, with data: Data?, completionHandler: @escaping (Result<Data, HttpError>) -> Void) {
+    func post (to urlToCall: URL, with data: Data?, completionHandler: @escaping (Result<Data?, HttpError>) -> Void) {
         let json = data?.toJson()
         session.request(urlToCall, method: .post, parameters: json, encoding: JSONEncoding.default).responseData { dataResponse in
-            guard dataResponse.response?.statusCode != nil else {
+            guard let statusCode = dataResponse.response?.statusCode else {
                 return completionHandler(.failure(.noConnectivityError))
             }
             
             switch dataResponse.result {
             case .failure: completionHandler(.failure(.noConnectivityError))
             case .success(let data):
-                completionHandler(.success(data))
+                switch statusCode {
+                case 204:
+                    completionHandler(.success(nil))
+                case 200...299:
+                    completionHandler(.success(data))
+                case 400:
+                    completionHandler(.failure(.badRequest))
+                case 401:
+                    completionHandler(.failure(.unauthorized))
+                case 403:
+                    completionHandler(.failure(.forbidden))
+                case 404:
+                    completionHandler(.failure(.not_found))
+                case 400...499:
+                    completionHandler(.failure(.badRequest))
+                case 500...599:
+                    completionHandler(.failure(.serverError))
+                default:
+                    completionHandler(.failure(.noConnectivityError))
+                }
             }
         }
     }
@@ -63,7 +83,24 @@ class AlamofireAdapterTests: XCTestCase {
         expectResult(.failure(.noConnectivityError), when: (data: nil, response: nil, error: nil))
     }
     
+    func test_post_should_complete_with_data_when_request_completes_with_200 () {
+        expectResult(.success(makeValidData()), when: (data: makeValidData(), response: makeHttpResponse(), error: nil))
+    }
+    
+    func test_post_should_complete_with_no_data_when_request_completes_with_204 () {
+        expectResult(.success(nil), when: (data: nil, response: makeHttpResponse(statusCode: 204), error: nil))
+        expectResult(.success(nil), when: (data: makeEmptyData(), response: makeHttpResponse(statusCode: 204), error: nil))
+        expectResult(.success(nil), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 204), error: nil))
+    }
 
+    func test_post_should_complete_with_error_when_request_completes_with_non_200 () {
+        expectResult(.failure(.badRequest), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 400), error: nil))
+        expectResult(.failure(.unauthorized), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 401), error: nil))
+        expectResult(.failure(.forbidden), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 403), error: nil))
+        expectResult(.failure(.not_found), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 404), error: nil))
+        expectResult(.failure(.badRequest), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 450), error: nil))
+        expectResult(.failure(.serverError), when: (data: makeValidData(), response: makeHttpResponse(statusCode: 500), error: nil))
+    }
 }
 
 extension AlamofireAdapterTests {
@@ -87,8 +124,8 @@ extension AlamofireAdapterTests {
         wait(for: [expect], timeout: 2)
         actionToDo(request!)
     }
-    
-    func expectResult (_ expectedResult: Result<Data, HttpError>, when stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
+
+    func expectResult (_ expectedResult: Result<Data?, HttpError>, when stub: (data: Data?, response: HTTPURLResponse?, error: Error?), file: StaticString = #file, line: UInt = #line) {
         let sut = makeSut()
         UrlProtocolStub.simulation(data: stub.data, response: stub.response, error: stub.error)
         let expect = expectation(description: "waiting")
