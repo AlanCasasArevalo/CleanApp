@@ -22,3 +22,8 @@ func makeUrl () -> URL {
     let urlToCall = URL(string: "www.google.com")!
     return urlToCall
 }
+
+func makeError() -> Error{
+    let error = NSError(domain: "any_error", code: 0)
+    return error
+}
