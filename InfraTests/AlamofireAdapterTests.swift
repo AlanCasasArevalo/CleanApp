@@ -20,9 +20,14 @@ class AlamofireAdapter {
     func post (to urlToCall: URL, with data: Data?, completionHandler: @escaping (Result<Data, HttpError>) -> Void) {
         let json = data?.toJson()
         session.request(urlToCall, method: .post, parameters: json, encoding: JSONEncoding.default).responseData { dataResponse in
+            guard dataResponse.response?.statusCode != nil else {
+                return completionHandler(.failure(.noConnectivityError))
+            }
+            
             switch dataResponse.result {
-            case .success: break
             case .failure: completionHandler(.failure(.noConnectivityError))
+            case .success(let data):
+                completionHandler(.success(data))
             }
         }
     }
@@ -49,6 +54,16 @@ class AlamofireAdapterTests: XCTestCase {
         expectResult(.failure(.noConnectivityError), when: (data: nil, response: nil, error: makeError()))
     }
     
+    func test_post_should_complete_with_error_on_all_invalid_cases () {
+        expectResult(.failure(.noConnectivityError), when: (data: makeValidData(), response: makeHttpResponse(), error: makeError()))
+        expectResult(.failure(.noConnectivityError), when: (data: makeValidData(), response: nil, error: makeError()))
+        expectResult(.failure(.noConnectivityError), when: (data: makeValidData(), response: nil, error: nil))
+        expectResult(.failure(.noConnectivityError), when: (data: nil, response: makeHttpResponse(), error: makeError()))
+        expectResult(.failure(.noConnectivityError), when: (data: nil, response: makeHttpResponse(), error: nil))
+        expectResult(.failure(.noConnectivityError), when: (data: nil, response: nil, error: nil))
+    }
+    
+
 }
 
 extension AlamofireAdapterTests {
