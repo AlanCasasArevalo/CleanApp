@@ -19,7 +19,10 @@ class SignUpPresenter {
     func signUp (viewModel: SignUpViewModel) {
         if viewModel.name == nil || viewModel.name!.isEmpty {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: "El nombre es obligatorio"))
+        } else if viewModel.email == nil || viewModel.email!.isEmpty {
+            alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: "El email es obligatorio"))
         }
+        
     }
 }
 
