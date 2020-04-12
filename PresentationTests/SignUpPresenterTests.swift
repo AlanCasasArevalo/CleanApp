@@ -72,7 +72,15 @@ class SignUpPresenterTests: XCTestCase {
         sut.signUp(viewModel: makeSignUpViewModel())
         XCTAssertEqual(addAccountSpy.addAccountModelRequest, makeAddAccountModelRequest())
     }
-
+        
+    func test_sign_up_should_show_error_message_if_addAccount_fails () {
+        let addAccountSpy = AddAccountSpy()
+        let alertViewSpy = AlertViewSpy()
+        let sut = makeSut(alertView: alertViewSpy, addAccount: addAccountSpy)
+        sut.signUp(viewModel: makeSignUpViewModel())
+        addAccountSpy.completionWithError(error: .unexpected)
+        XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Error", message: "Ha sucedido un error al crear cuenta"))
+    }
 }
 
 extension SignUpPresenterTests {
@@ -116,8 +124,15 @@ extension SignUpPresenterTests {
 extension SignUpPresenterTests {
     class AddAccountSpy: AddAccountProtocol {
         var addAccountModelRequest: AddAccountModelRequest?
-        func addAccount(addAccountModel: AddAccountModelRequest, completationHandler: @escaping (Result<AccountModel, DomainError>) -> Void) {
+        var completionHandler: ((Result<AccountModel, DomainError>) -> Void)?
+        
+        func addAccount(addAccountModel: AddAccountModelRequest, completionHandler: @escaping (Result<AccountModel, DomainError>) -> Void) {
             self.addAccountModelRequest = addAccountModel
+            self.completionHandler = completionHandler
+        }
+        
+        func completionWithError (error: DomainError) {
+            completionHandler?(.failure(error))
         }
     }
 }
