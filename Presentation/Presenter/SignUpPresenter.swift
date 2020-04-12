@@ -35,8 +35,9 @@ public final class SignUpPresenter {
             return "El passwordConfirmation es obligatorio"
         } else if viewModel.password != viewModel.passwordConfirmation {
             return "La contraseña y la confirmacion de la contraseña han de ser iguales"
+        } else if !emailValidator.isEmailValid(email: viewModel.email ?? "") {
+            return "El email no es de tipo valido."
         }
-        _ = emailValidator.isEmailValid(email: viewModel.email ?? "")
         return nil
     }
 }
