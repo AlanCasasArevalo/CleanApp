@@ -41,6 +41,7 @@
 		51AD2C5524430B3900680321 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51595609243DCA5A00721BFA /* Data.framework */; };
 		51AD2C6D244314B500680321 /* Presentation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51AD2C64244314B500680321 /* Presentation.framework */; };
 		51AD2C72244314B500680321 /* SignUpPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C71244314B500680321 /* SignUpPresenterTests.swift */; };
+		51D207BF24435C000067C3BB /* AccountModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1D7243E235A00CD1595 /* AccountModelFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -881,6 +882,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51D207BF24435C000067C3BB /* AccountModelFactory.swift in Sources */,
 				51AD2C72244314B500680321 /* SignUpPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
