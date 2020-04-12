@@ -8,6 +8,8 @@
 
 import XCTest
 import Presentation
+import Domain
+import Data
 
 class SignUpPresenterTests: XCTestCase {
 
@@ -64,11 +66,18 @@ class SignUpPresenterTests: XCTestCase {
         XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Falla la validacion", message: "El email no es de tipo valido."))
     }
     
+    func test_sign_up_should_call_emailValidator_with_correct_values () {
+        let addAccountSpy = AddAccountSpy()
+        let sut = makeSut(addAccount: addAccountSpy)
+        sut.signUp(viewModel: makeSignUpViewModel())
+        XCTAssertEqual(addAccountSpy.addAccountModelRequest, makeAddAccountModelRequest())
+    }
+
 }
 
 extension SignUpPresenterTests {
-    func makeSut (alertView: AlertViewSpy = AlertViewSpy(), emailValidator: EmailValidatorSpy = EmailValidatorSpy()) -> SignUpPresenter  {
-        let sut = SignUpPresenter(alertView: alertView, emailValidator: emailValidator)
+    func makeSut (alertView: AlertViewSpy = AlertViewSpy(), emailValidator: EmailValidatorSpy = EmailValidatorSpy(), addAccount: AddAccountSpy = AddAccountSpy()) -> SignUpPresenter  {
+        let sut = SignUpPresenter(alertView: alertView, emailValidator: emailValidator, addAccount: addAccount)
         return sut
     }
     
@@ -100,6 +109,15 @@ extension SignUpPresenterTests {
         
         func simulateInvalidEmail () {
             self.isValid = false
+        }
+    }
+}
+
+extension SignUpPresenterTests {
+    class AddAccountSpy: AddAccountProtocol {
+        var addAccountModelRequest: AddAccountModelRequest?
+        func addAccount(addAccountModel: AddAccountModelRequest, completationHandler: @escaping (Result<AccountModel, DomainError>) -> Void) {
+            self.addAccountModelRequest = addAccountModel
         }
     }
 }
