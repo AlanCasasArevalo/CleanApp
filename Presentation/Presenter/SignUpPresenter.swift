@@ -7,20 +7,28 @@
 //
 
 import Foundation
+import Domain
 
 public final class SignUpPresenter {
     
     private let alertView: AlertViewProtocol
     private let emailValidator: EmailValidatorProtocol
+    private let addAccount: AddAccountProtocol
     
-    public init(alertView: AlertViewProtocol, emailValidator: EmailValidatorProtocol) {
+    public init(alertView: AlertViewProtocol, emailValidator: EmailValidatorProtocol, addAccount: AddAccountProtocol) {
         self.alertView = alertView
         self.emailValidator = emailValidator
+        self.addAccount = addAccount
     }
     
     public func signUp (viewModel: SignUpViewModel) {
         if let errorMessage = validateViewModel(viewModel: viewModel) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: errorMessage))
+        } else {
+            let addAccountModel = AddAccountModelRequest(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
+            addAccount.addAccount(addAccountModel: addAccountModel) { (result) in
+                
+            }
         }
     }
     
