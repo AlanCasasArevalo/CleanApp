@@ -11,9 +11,11 @@ import Foundation
 public final class SignUpPresenter {
     
     private let alertView: AlertViewProtocol
+    private let emailValidator: EmailValidatorProtocol
     
-    public init(alertView: AlertViewProtocol) {
+    public init(alertView: AlertViewProtocol, emailValidator: EmailValidatorProtocol) {
         self.alertView = alertView
+        self.emailValidator = emailValidator
     }
     
     public func signUp (viewModel: SignUpViewModel) {
@@ -34,6 +36,7 @@ public final class SignUpPresenter {
         } else if viewModel.password != viewModel.passwordConfirmation {
             return "La contraseña y la confirmacion de la contraseña han de ser iguales"
         }
+        _ = emailValidator.isEmailValid(email: viewModel.email ?? "")
         return nil
     }
 }
