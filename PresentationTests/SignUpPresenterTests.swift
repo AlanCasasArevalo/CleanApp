@@ -42,14 +42,20 @@ struct AlertViewModel: Equatable {
 class SignUpPresenterTests: XCTestCase {
 
     func test_sign_up_should_show_error_message_if_name_is_not_provider () {
-        let alertViewSpy = AlertViewSpy()
-        let sut = SignUpPresenter(alertView: alertViewSpy)
+        let (sut, alertViewSpy) = makeSut()
         let signUpViewModel = SignUpViewModel(email: "any_email", password: "any_password", passwordConfirmation: "any_password")
-//        let signUpViewModel = SignUpViewModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signUpViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Falla la validacion", message: "El nombre es obligatorio"))
     }
 
+}
+
+extension SignUpPresenterTests {
+    func makeSut () -> (sut: SignUpPresenter, alertViewSpy: AlertViewSpy) {
+        let alertViewSpy = AlertViewSpy()
+        let sut = SignUpPresenter(alertView: alertViewSpy)
+        return (sut, alertViewSpy)
+    }
 }
 
 extension SignUpPresenterTests {
