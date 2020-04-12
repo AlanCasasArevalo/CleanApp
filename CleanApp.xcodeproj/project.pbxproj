@@ -35,6 +35,8 @@
 		51595627243DE24E00721BFA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595626243DE24E00721BFA /* Model.swift */; };
 		51595629243DE39400721BFA /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595628243DE39400721BFA /* RemoteAddAccount.swift */; };
 		5159562B243DE3EC00721BFA /* HttpPostClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159562A243DE3EC00721BFA /* HttpPostClientProtocol.swift */; };
+		51A5765924436DE300EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
+		51A5765A24436DE600EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
 		51AD2C47244304C800680321 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C46244304C800680321 /* AlamofireAdapter.swift */; };
 		51AD2C4B2443062100680321 /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C4A2443062100680321 /* UrlProtocolStub.swift */; };
 		51AD2C5324430B3900680321 /* AddAccountIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C5224430B3900680321 /* AddAccountIntegrationTest.swift */; };
@@ -863,6 +865,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A5765A24436DE600EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */,
 				51AD2C5324430B3900680321 /* AddAccountIntegrationTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -883,6 +886,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				51D207BF24435C000067C3BB /* AccountModelFactory.swift in Sources */,
+				51A5765924436DE300EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */,
 				51AD2C72244314B500680321 /* SignUpPresenterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
