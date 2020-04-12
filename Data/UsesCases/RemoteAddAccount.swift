@@ -18,18 +18,18 @@ public final class RemoteAddAccount: AddAccountProtocol {
         self.httpClient = httpClient
     }
     
-    public func addAccount(addAccountModel: AddAccountModelRequest, completationHandler: @escaping (Result<AccountModel, DomainError>) -> Void) {
+    public func addAccount(addAccountModel: AddAccountModelRequest, completionHandler: @escaping (Result<AccountModel, DomainError>) -> Void) {
         httpClient.post(to: urlToCall, with: addAccountModel.toData()) { [weak self] result in
             guard self != nil else { return }
             
             switch result {
             case .success(let data):
                 if let model: AccountModel = data?.toModel() {
-                    completationHandler(.success(model))
+                    completionHandler(.success(model))
                 } else {
-                    completationHandler(.failure(.unexpected))
+                    completionHandler(.failure(.unexpected))
                 }
-            case .failure: completationHandler(.failure(.unexpected))
+            case .failure: completionHandler(.failure(.unexpected))
             }
         }
     }
