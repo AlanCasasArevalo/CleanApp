@@ -14,17 +14,20 @@ public final class SignUpPresenter {
     private let alertView: AlertViewProtocol
     private let emailValidator: EmailValidatorProtocol
     private let addAccount: AddAccountProtocol
+    private let loaderView: LoaderViewProtocol
     
-    public init(alertView: AlertViewProtocol, emailValidator: EmailValidatorProtocol, addAccount: AddAccountProtocol) {
+    public init(alertView: AlertViewProtocol, emailValidator: EmailValidatorProtocol, addAccount: AddAccountProtocol, loaderView: LoaderViewProtocol) {
         self.alertView = alertView
         self.emailValidator = emailValidator
         self.addAccount = addAccount
+        self.loaderView = loaderView
     }
     
     public func signUp (viewModel: SignUpViewModel) {
         if let errorMessage = validateViewModel(viewModel: viewModel) {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: errorMessage))
         } else {
+            loaderView.showLoader(viewModel: LoaderViewModel(isLoading: true))
             let addAccountModel = AddAccountModelRequest(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
             addAccount.addAccount(addAccountModel: addAccountModel) { [weak self] (result) in
                 guard let self = self else { return }
