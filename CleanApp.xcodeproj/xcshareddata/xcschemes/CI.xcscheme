@@ -115,6 +115,13 @@
             BlueprintName = "Presentation"
             ReferencedContainer = "container:CleanApp.xcodeproj">
          </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "51AD2C4F24430B3900680321"
+            BuildableName = "UsesCasesIntegrationTests.xctest"
+            BlueprintName = "UsesCasesIntegrationTests"
+            ReferencedContainer = "container:CleanApp.xcodeproj">
+         </BuildableReference>
       </CodeCoverageTargets>
       <Testables>
          <TestableReference
