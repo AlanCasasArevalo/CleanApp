@@ -8,50 +8,9 @@
 
 import XCTest
 import Data
+import Infra
 import Alamofire
 
-class AlamofireAdapter: HttpPostClientProtocol {
-    
-    private let session: Session
-    
-    init(session: Session = .default) {
-        self.session = session
-    }
-    
-    func post (to urlToCall: URL, with data: Data?, completionHandler: @escaping (Result<Data?, HttpError>) -> Void) {
-        let json = data?.toJson()
-        session.request(urlToCall, method: .post, parameters: json, encoding: JSONEncoding.default).responseData { dataResponse in
-            guard let statusCode = dataResponse.response?.statusCode else {
-                return completionHandler(.failure(.noConnectivityError))
-            }
-            
-            switch dataResponse.result {
-            case .failure: completionHandler(.failure(.noConnectivityError))
-            case .success(let data):
-                switch statusCode {
-                case 204:
-                    completionHandler(.success(nil))
-                case 200...299:
-                    completionHandler(.success(data))
-                case 400:
-                    completionHandler(.failure(.badRequest))
-                case 401:
-                    completionHandler(.failure(.unauthorized))
-                case 403:
-                    completionHandler(.failure(.forbidden))
-                case 404:
-                    completionHandler(.failure(.not_found))
-                case 400...499:
-                    completionHandler(.failure(.badRequest))
-                case 500...599:
-                    completionHandler(.failure(.serverError))
-                default:
-                    completionHandler(.failure(.noConnectivityError))
-                }
-            }
-        }
-    }
-}
 class AlamofireAdapterTests: XCTestCase {
     
     func test_post_should_make_request_with_valid_url_and_method () {
@@ -104,6 +63,7 @@ class AlamofireAdapterTests: XCTestCase {
 }
 
 extension AlamofireAdapterTests {
+    
     func makeSut (file: StaticString = #file, line: UInt = #line) -> AlamofireAdapter {
         let sessionConfiguration = URLSessionConfiguration.default
         sessionConfiguration.protocolClasses = [UrlProtocolStub.self]
