@@ -9,8 +9,17 @@
 import XCTest
 
 class SignUpPresenter {
+    
+    private let alertView: AlertViewProtocol
+    
+    init(alertView: AlertViewProtocol) {
+        self.alertView = alertView
+    }
+    
     func signUp (viewModel: SignUpViewModel) {
-        
+        if viewModel.name == nil || viewModel.name!.isEmpty {
+            alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: "El nombre es obligatorio"))
+        }
     }
 }
 
@@ -33,9 +42,10 @@ struct AlertViewModel: Equatable {
 class SignUpPresenterTests: XCTestCase {
 
     func test_sign_up_should_show_error_message_if_name_is_not_provider () {
-        let sut = SignUpPresenter()
         let alertViewSpy = AlertViewSpy()
-        let signUpViewModel = SignUpViewModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
+        let sut = SignUpPresenter(alertView: alertViewSpy)
+        let signUpViewModel = SignUpViewModel(email: "any_email", password: "any_password", passwordConfirmation: "any_password")
+//        let signUpViewModel = SignUpViewModel(name: "any_name", email: "any_email", password: "any_password", passwordConfirmation: "any_password")
         sut.signUp(viewModel: signUpViewModel)
         XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Falla la validacion", message: "El nombre es obligatorio"))
     }
