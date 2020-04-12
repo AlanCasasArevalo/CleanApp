@@ -21,6 +21,8 @@ class SignUpPresenter {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: "El nombre es obligatorio"))
         } else if viewModel.email == nil || viewModel.email!.isEmpty {
             alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: "El email es obligatorio"))
+        } else if viewModel.password == nil || viewModel.password!.isEmpty {
+            alertView.showMessage(viewModel: AlertViewModel(title: "Falla la validacion", message: "El password es obligatorio"))
         }
         
     }
