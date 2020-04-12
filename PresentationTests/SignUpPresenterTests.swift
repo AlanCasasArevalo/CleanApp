@@ -48,6 +48,13 @@ class SignUpPresenterTests: XCTestCase {
         XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Falla la validacion", message: "El nombre es obligatorio"))
     }
 
+    func test_sign_up_should_show_error_message_if_email_is_not_provider () {
+        let (sut, alertViewSpy) = makeSut()
+        let signUpViewModel = SignUpViewModel(name: "any_name", password: "any_password", passwordConfirmation: "any_password")
+        sut.signUp(viewModel: signUpViewModel)
+        XCTAssertEqual(alertViewSpy.viewModel, AlertViewModel(title: "Falla la validacion", message: "El email es obligatorio"))
+    }
+
 }
 
 extension SignUpPresenterTests {
