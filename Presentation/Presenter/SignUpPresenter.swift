@@ -27,7 +27,12 @@ public final class SignUpPresenter {
         } else {
             let addAccountModel = AddAccountModelRequest(name: viewModel.name!, email: viewModel.email!, password: viewModel.password!, passwordConfirmation: viewModel.passwordConfirmation!)
             addAccount.addAccount(addAccountModel: addAccountModel) { (result) in
-                
+                switch result {
+                case .success: break
+                case .failure:
+                    let alertViewModel = AlertViewModel(title: "Error", message: "Ha sucedido un error al crear cuenta")
+                    self.alertView.showMessage(viewModel: alertViewModel)
+                }
             }
         }
     }
