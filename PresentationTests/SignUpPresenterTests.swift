@@ -116,6 +116,15 @@ class SignUpPresenterTests: XCTestCase {
         addAccountSpy.completionWithError(error: .unexpected)
         wait(for: [expect], timeout: 2)
     }
+        
+    func test_sign_up_should_show_loading_is_calling_before_call_addAccount () {
+        let loadingViewSpy = LoadingView()
+        let sut = makeSut(loadingView: loadingViewSpy)
+        sut.signUp(viewModel: makeSignUpViewModel())
+        XCTAssertEqual(loadingViewSpy.isLoading, true)
+
+    }
+
 }
 
 extension SignUpPresenterTests {
