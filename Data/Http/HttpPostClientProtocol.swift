@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol HttpPostClientProtocol {
-    func post(to urlToCall: URL, with data: Data?, completationHandler: @escaping (Result<Data, HttpError>) -> Void)
+    func post(to urlToCall: URL, with data: Data?, completionHandler: @escaping (Result<Data?, HttpError>) -> Void)
 }
