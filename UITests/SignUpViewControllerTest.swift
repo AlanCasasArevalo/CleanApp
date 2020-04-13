@@ -21,7 +21,6 @@ class SignUpViewControllerTest: XCTestCase {
     
     func test_loading_is_hidden_on_start () {
         let sut = makeSut()
-        sut.viewDidLoad()
         XCTAssertEqual(sut.loadingIndicator?.isAnimating, false)
         sut.endAppearanceTransition()
     }
@@ -37,14 +36,41 @@ class SignUpViewControllerTest: XCTestCase {
         XCTAssertNotNil(sut as AlertViewProtocol)
         sut.endAppearanceTransition()
     }
+
+    func test_save_button_is_not_nil () {
+        let sut = makeSut()
+        XCTAssertNotNil(sut.saveButton)
+        sut.endAppearanceTransition()
+    }
+
+    func test_save_button_calls_signUp_on_tap () {
+        var callsCount = 0
+        let sut = makeSut(signUpSpy: { _ in
+            callsCount += 1
+        })
+        sut.saveButton?.simulateTap()
+        XCTAssertEqual(callsCount, 1)
+        sut.endAppearanceTransition()
+    }
 }
 
 extension SignUpViewControllerTest {
-    func makeSut () -> SignUpViewController {
+    func makeSut (signUpSpy: ((SignUpViewModel) -> Void)? = nil) -> SignUpViewController {
         let sb = UIStoryboard(name: "SignUpViewController", bundle: Bundle(for: SignUpViewController.self))
         let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
         sut.beginAppearanceTransition(true, animated: false)
+        sut.signUp = signUpSpy
         sut.loadViewIfNeeded()
         return sut
+    }
+}
+
+extension UIControl {
+    func simulate () {
+        
+    }
+    
+    func simulateTap() {
+        
     }
 }
