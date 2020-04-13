@@ -50,6 +50,7 @@
 		51A5769B2444BB2D00EE9DE5 /* SignUpXIBViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A576992444BB2D00EE9DE5 /* SignUpXIBViewController.swift */; };
 		51A5769C2444BB2D00EE9DE5 /* SignUpXIBViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 51A5769A2444BB2D00EE9DE5 /* SignUpXIBViewController.xib */; };
 		51A5769E2444BCA700EE9DE5 /* SignUpViewControllerXIBTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5769D2444BCA700EE9DE5 /* SignUpViewControllerXIBTest.swift */; };
+		51A576A62444C17E00EE9DE5 /* TAP+UIControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A576A52444C17E00EE9DE5 /* TAP+UIControl.swift */; };
 		51AD2C47244304C800680321 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C46244304C800680321 /* AlamofireAdapter.swift */; };
 		51AD2C4B2443062100680321 /* UrlProtocolStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C4A2443062100680321 /* UrlProtocolStub.swift */; };
 		51AD2C5324430B3900680321 /* AddAccountIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C5224430B3900680321 /* AddAccountIntegrationTest.swift */; };
@@ -210,6 +211,7 @@
 		51A576992444BB2D00EE9DE5 /* SignUpXIBViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpXIBViewController.swift; sourceTree = "<group>"; };
 		51A5769A2444BB2D00EE9DE5 /* SignUpXIBViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SignUpXIBViewController.xib; sourceTree = "<group>"; };
 		51A5769D2444BCA700EE9DE5 /* SignUpViewControllerXIBTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerXIBTest.swift; sourceTree = "<group>"; };
+		51A576A52444C17E00EE9DE5 /* TAP+UIControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TAP+UIControl.swift"; sourceTree = "<group>"; };
 		51AD2C46244304C800680321 /* AlamofireAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapter.swift; sourceTree = "<group>"; };
 		51AD2C4A2443062100680321 /* UrlProtocolStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlProtocolStub.swift; sourceTree = "<group>"; };
 		51AD2C5024430B3900680321 /* UsesCasesIntegrationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UsesCasesIntegrationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -554,6 +556,7 @@
 		51A5767D24444D1000EE9DE5 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
+				51A576A42444C14600EE9DE5 /* Extensions */,
 				51A5768024444D1000EE9DE5 /* Info.plist */,
 				51A576A32444C0F400EE9DE5 /* Scenes */,
 			);
@@ -610,6 +613,14 @@
 				51A576A12444C0C300EE9DE5 /* SignUpWithXIB */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		51A576A42444C14600EE9DE5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				51A576A52444C17E00EE9DE5 /* TAP+UIControl.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		51AD2C482443056700680321 /* Http */ = {
@@ -1113,6 +1124,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				51A576A62444C17E00EE9DE5 /* TAP+UIControl.swift in Sources */,
 				51A5769E2444BCA700EE9DE5 /* SignUpViewControllerXIBTest.swift in Sources */,
 				51A5767F24444D1000EE9DE5 /* SignUpViewControllerTest.swift in Sources */,
 			);
