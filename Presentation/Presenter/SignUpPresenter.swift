@@ -32,7 +32,9 @@ public final class SignUpPresenter {
             addAccount.addAccount(addAccountModel: addAccountModel) { [weak self] (result) in
                 guard let self = self else { return }
                 switch result {
-                case .success: break
+                case .success:
+                    let alertViewModel = AlertViewModel(title: "OK", message: "Todo ha ido bien has creado una cuenta correctamente.")
+                    self.alertView.showMessage(viewModel: alertViewModel)
                 case .failure:
                     let alertViewModel = AlertViewModel(title: "Error", message: "Ha sucedido un error al crear cuenta")
                     self.alertView.showMessage(viewModel: alertViewModel)
