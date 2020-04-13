@@ -9,9 +9,12 @@
 import XCTest
 import Presentation
 
+
 class EmailValidatorAdapterTests: XCTestCase {
 
-    func test_ () {
+    func test_invalid_emails () {
+        let sut = EmailValidatorAdapter()
+        XCTAssertFalse(sut.isEmailValid(email: "eee@@jd.com"))
     }
 
 }
