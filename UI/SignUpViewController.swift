@@ -18,7 +18,19 @@ final class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configure()
     }
+}
+
+extension SignUpViewController {
+    private func configure(){
+        saveButton.addTarget(self, action: #selector(saveButtonTouched), for: .touchUpInside)
+    }
+    
+    @objc private func saveButtonTouched() {
+        signUp?(SignUpViewModel(name: nil, email: nil, password: nil, passwordConfirmation: nil))
+    }
+    
 }
 
 extension SignUpViewController: LoaderViewProtocol {
