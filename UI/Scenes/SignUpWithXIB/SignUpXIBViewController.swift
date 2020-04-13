@@ -29,6 +29,7 @@ final class SignUpXIBViewController: UIViewController {
 
 extension SignUpXIBViewController {
     private func configure(){
+        saveButton.layer.cornerRadius = saveButton.frame.height / 2
         saveButton.addTarget(self, action: #selector(saveButtonTouched), for: .touchUpInside)
     }
     
