@@ -10,11 +10,14 @@ import XCTest
 import Presentation
 
 
-class EmailValidatorAdapter: EmailValidatorProtocol {
+public class EmailValidatorAdapter: EmailValidatorProtocol {
     private let patter = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
     
-    func isEmailValid(email: String) -> Bool {
-        return true
+    public func isEmailValid(email: String) -> Bool {
+        let range = NSRange(location: 0, length: email.utf16.count)
+        let regex = try? NSRegularExpression(pattern: patter)
+        let match = regex?.firstMatch(in: email, options: [], range: range) != nil
+        return match
     }
 }
 
