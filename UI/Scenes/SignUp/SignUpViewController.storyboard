@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -88,6 +89,7 @@
                             <constraint firstItem="Nuo-Tl-7Pp" firstAttribute="top" secondItem="Gdu-bh-tYQ" secondAttribute="bottom" constant="80" id="otI-1s-v1i"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Nuo-Tl-7Pp" secondAttribute="trailing" constant="20" id="xPK-l7-s9F"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="aqc-kP-9v5"/>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="yBq-DM-MNw" id="cK8-Oc-k3d"/>

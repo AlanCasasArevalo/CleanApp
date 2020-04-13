@@ -22,6 +22,7 @@
 		510E72A5243E2C09009138C6 /* TestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1D2243E228D00CD1595 /* TestFactory.swift */; };
 		510E72A8243E2D93009138C6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 510E72A7243E2D93009138C6 /* Alamofire */; };
 		511A191B2444C8F30019BFE6 /* UI+KeyboardExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A191A2444C8F30019BFE6 /* UI+KeyboardExtension.swift */; };
+		511A191D2444CA420019BFE6 /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 511A191C2444CA420019BFE6 /* Storyboarded.swift */; };
 		514B75172443287F001B303A /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514B75162443287F001B303A /* SignUpPresenter.swift */; };
 		514B751B244328C7001B303A /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514B751A244328C7001B303A /* SignUpViewModel.swift */; };
 		514B751D244328DD001B303A /* AlertViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514B751C244328DD001B303A /* AlertViewModel.swift */; };
@@ -180,6 +181,7 @@
 		510E7295243E292C009138C6 /* AlamofireAdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireAdapterTests.swift; sourceTree = "<group>"; };
 		510E7297243E292C009138C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		511A191A2444C8F30019BFE6 /* UI+KeyboardExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UI+KeyboardExtension.swift"; sourceTree = "<group>"; };
+		511A191C2444CA420019BFE6 /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
 		514B75162443287F001B303A /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		514B751A244328C7001B303A /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		514B751C244328DD001B303A /* AlertViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewModel.swift; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 			isa = PBXGroup;
 			children = (
 				511A191A2444C8F30019BFE6 /* UI+KeyboardExtension.swift */,
+				511A191C2444CA420019BFE6 /* Storyboarded.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1126,6 +1129,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				511A191D2444CA420019BFE6 /* Storyboarded.swift in Sources */,
 				51A5769B2444BB2D00EE9DE5 /* SignUpXIBViewController.swift in Sources */,
 				51A576912444642900EE9DE5 /* SignUpViewController.swift in Sources */,
 				511A191B2444C8F30019BFE6 /* UI+KeyboardExtension.swift in Sources */,

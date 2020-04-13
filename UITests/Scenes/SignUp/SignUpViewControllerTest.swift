@@ -68,8 +68,7 @@ class SignUpViewControllerTest: XCTestCase {
 
 extension SignUpViewControllerTest {
     func makeSut (signUpSpy: ((SignUpViewModel) -> Void)? = nil) -> SignUpViewController {
-        let sb = UIStoryboard(name: "SignUpViewController", bundle: Bundle(for: SignUpViewController.self))
-        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        let sut = SignUpViewController.instantiate()
         sut.beginAppearanceTransition(true, animated: false)
         sut.signUp = signUpSpy
         sut.loadViewIfNeeded()

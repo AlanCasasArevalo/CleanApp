@@ -26,6 +26,10 @@ final class SignUpViewController: UIViewController {
     }
 }
 
+extension SignUpViewController: Storyboarded {
+    
+}
+
 extension SignUpViewController {
     private func configure(){
         saveButton.layer.cornerRadius = saveButton.frame.height / 2
