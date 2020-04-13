@@ -37,6 +37,7 @@ public final class SignUpPresenter {
                     let alertViewModel = AlertViewModel(title: "Error", message: "Ha sucedido un error al crear cuenta")
                     self.alertView.showMessage(viewModel: alertViewModel)
                 }
+                self.loaderView.showLoader(viewModel: LoaderViewModel(isLoading: false))
             }
         }
     }
