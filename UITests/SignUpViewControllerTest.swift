@@ -52,6 +52,18 @@ class SignUpViewControllerTest: XCTestCase {
         XCTAssertEqual(callsCount, 1)
         sut.endAppearanceTransition()
     }
+        
+    func test_save_button_calls_with_correct_values () {
+        var signUpViewModel: SignUpViewModel?
+        let sut = makeSut(signUpSpy: { signUpViewModel = $0 })
+        sut.saveButton?.simulateTap()
+        let name = sut.nameTextField?.text
+        let email = sut.emailTextField?.text
+        let password = sut.passwordTextField?.text
+        let passwordConfirmation = sut.passwordConfirmationTextField?.text
+        XCTAssertEqual(signUpViewModel, SignUpViewModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation))
+        sut.endAppearanceTransition()
+    }
 }
 
 extension SignUpViewControllerTest {
