@@ -26,3 +26,9 @@ extension SignUpViewController: LoaderViewProtocol {
         }
     }
 }
+
+extension SignUpViewController: AlertViewProtocol {
+    func showMessage(viewModel: AlertViewModel) {
+        
+    }
+}
