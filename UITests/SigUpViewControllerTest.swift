@@ -42,4 +42,13 @@ class SigUpViewControllerTest: XCTestCase {
         XCTAssertNotNil(sut as LoaderViewProtocol)
         sut.endAppearanceTransition()
     }
+    
+    func test_sut_is_implements_alertViewProtocol () {
+        let sb = UIStoryboard(name: "SignUpViewController", bundle: Bundle(for: SignUpViewController.self))
+        let sut = sb.instantiateViewController(identifier: "SignUpViewController") as! SignUpViewController
+        sut.beginAppearanceTransition(true, animated: false)
+        sut.loadViewIfNeeded()
+        XCTAssertNotNil(sut as AlertViewProtocol)
+        sut.endAppearanceTransition()
+    }
 }
