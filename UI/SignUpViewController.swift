@@ -10,7 +10,11 @@ import UIKit
 import Presentation
 
 final class SignUpViewController: UIViewController {
+    
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var saveButton: UIButton!
+    
+    var signUp: ((SignUpViewModel) -> Void)?
     
     override func viewDidLoad() {
         super.viewDidLoad()
