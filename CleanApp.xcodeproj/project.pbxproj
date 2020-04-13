@@ -472,9 +472,24 @@
 				51A5766224444A0100EE9DE5 /* AlertViewSpy.swift */,
 				51A5766624444AA800EE9DE5 /* AddAccountSpy.swift */,
 				51A5766824444AD400EE9DE5 /* LoaderViewSpy.swift */,
-				51A5766424444A5A00EE9DE5 /* EmailValidatorSpy.swift */,
 			);
 			path = ViewModelSpy;
+			sourceTree = "<group>";
+		};
+		51A5766A24444B5D00EE9DE5 /* Validators */ = {
+			isa = PBXGroup;
+			children = (
+				51A5766424444A5A00EE9DE5 /* EmailValidatorSpy.swift */,
+			);
+			path = Validators;
+			sourceTree = "<group>";
+		};
+		51A5766B24444B7300EE9DE5 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				51AD2C71244314B500680321 /* SignUpPresenterTests.swift */,
+			);
+			path = Presenter;
 			sourceTree = "<group>";
 		};
 		51AD2C482443056700680321 /* Http */ = {
@@ -518,9 +533,10 @@
 		51AD2C70244314B500680321 /* PresentationTests */ = {
 			isa = PBXGroup;
 			children = (
-				51A57661244449D600EE9DE5 /* ViewModelSpy */,
-				51AD2C71244314B500680321 /* SignUpPresenterTests.swift */,
 				51AD2C73244314B500680321 /* Info.plist */,
+				51A5766A24444B5D00EE9DE5 /* Validators */,
+				51A57661244449D600EE9DE5 /* ViewModelSpy */,
+				51A5766B24444B7300EE9DE5 /* Presenter */,
 			);
 			path = PresentationTests;
 			sourceTree = "<group>";
