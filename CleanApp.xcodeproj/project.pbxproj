@@ -310,14 +310,6 @@
 			path = InfraTests;
 			sourceTree = "<group>";
 		};
-		514B751E24432DF1001B303A /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				514B751A244328C7001B303A /* SignUpViewModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		514B751F24432DFA001B303A /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
@@ -453,6 +445,7 @@
 			children = (
 				514B751C244328DD001B303A /* AlertViewModel.swift */,
 				51A5765C244379F900EE9DE5 /* LoaderViewModel.swift */,
+				514B751A244328C7001B303A /* SignUpViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -499,7 +492,6 @@
 				51A5765B244379A800EE9DE5 /* ViewModel */,
 				514B752024432E0C001B303A /* Validators */,
 				514B751F24432DFA001B303A /* Presenter */,
-				514B751E24432DF1001B303A /* Models */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
