@@ -44,7 +44,9 @@ extension SignUpXIBViewController: LoaderViewProtocol {
     func showLoader(viewModel: LoaderViewModel) {
         if viewModel.isLoading {
             loaderView.startAnimating()
+            view.isUserInteractionEnabled = false
         } else {
+            view.isUserInteractionEnabled = true
             loaderView.stopAnimating()
         }
     }
