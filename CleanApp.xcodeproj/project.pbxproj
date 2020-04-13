@@ -44,7 +44,7 @@
 		51A5766724444AA800EE9DE5 /* AddAccountSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5766624444AA800EE9DE5 /* AddAccountSpy.swift */; };
 		51A5766924444AD400EE9DE5 /* LoaderViewSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5766824444AD400EE9DE5 /* LoaderViewSpy.swift */; };
 		51A5767A24444D1000EE9DE5 /* UI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51A5767124444D1000EE9DE5 /* UI.framework */; };
-		51A5767F24444D1000EE9DE5 /* SigUpViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5767E24444D1000EE9DE5 /* SigUpViewControllerTest.swift */; };
+		51A5767F24444D1000EE9DE5 /* SignUpViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5767E24444D1000EE9DE5 /* SignUpViewControllerTest.swift */; };
 		51A576912444642900EE9DE5 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A576902444642900EE9DE5 /* SignUpViewController.swift */; };
 		51A576932444649900EE9DE5 /* SignUpViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51A576922444649900EE9DE5 /* SignUpViewController.storyboard */; };
 		51AD2C47244304C800680321 /* AlamofireAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51AD2C46244304C800680321 /* AlamofireAdapter.swift */; };
@@ -200,7 +200,7 @@
 		51A5767124444D1000EE9DE5 /* UI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = UI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51A5767424444D1000EE9DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A5767924444D1000EE9DE5 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		51A5767E24444D1000EE9DE5 /* SigUpViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigUpViewControllerTest.swift; sourceTree = "<group>"; };
+		51A5767E24444D1000EE9DE5 /* SignUpViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewControllerTest.swift; sourceTree = "<group>"; };
 		51A5768024444D1000EE9DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51A576902444642900EE9DE5 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		51A576922444649900EE9DE5 /* SignUpViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SignUpViewController.storyboard; sourceTree = "<group>"; };
@@ -549,7 +549,7 @@
 		51A5767D24444D1000EE9DE5 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
-				51A5767E24444D1000EE9DE5 /* SigUpViewControllerTest.swift */,
+				51A5767E24444D1000EE9DE5 /* SignUpViewControllerTest.swift */,
 				51A5768024444D1000EE9DE5 /* Info.plist */,
 			);
 			path = UITests;
@@ -1054,7 +1054,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51A5767F24444D1000EE9DE5 /* SigUpViewControllerTest.swift in Sources */,
+				51A5767F24444D1000EE9DE5 /* SignUpViewControllerTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
