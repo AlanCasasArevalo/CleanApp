@@ -8,18 +8,18 @@
 
 import UIKit
 import UI
-import Data
+import Domain
 import Validation
 import Presentation
 
 class ControllerFactory {
-    static func makeSignUp (addAccount: RemoteAddAccount) -> SignUpViewController {
+    static func makeSignUp (addAccount: AddAccountProtocol) -> SignUpViewController {
         let viewController = SignUpViewController.instantiate()
         viewController.signUp = presenter(viewController: viewController, addAccount: addAccount).signUp
         return viewController
     }
     
-    static func presenter (viewController: SignUpViewController, addAccount: RemoteAddAccount) -> SignUpPresenter {
+    static func presenter (viewController: SignUpViewController, addAccount: AddAccountProtocol) -> SignUpPresenter {
         let presenter = SignUpPresenter(alertView: viewController, emailValidator: validator(), addAccount: addAccount, loaderView: viewController)
         return presenter
     }
