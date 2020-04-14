@@ -29,23 +29,3 @@ class ControllerFactory {
         return validator
     }
 }
-
-class WeakVarProxy<T: AnyObject> {
-    private weak var instance: T?
-    
-    init(_ instance: T) {
-        self.instance = instance
-    }
-}
-
-extension WeakVarProxy: AlertViewProtocol where T: AlertViewProtocol {
-    func showMessage(viewModel: AlertViewModel) {
-        instance?.showMessage(viewModel: viewModel)
-    }
-}
-
-extension WeakVarProxy: LoaderViewProtocol where T: LoaderViewProtocol {
-    func showLoader(viewModel: LoaderViewModel) {
-        instance?.showLoader(viewModel: viewModel)
-    }
-}
