@@ -61,6 +61,9 @@
 		519AF7412445A1E1008374D4 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7402445A1E1008374D4 /* ControllerFactory.swift */; };
 		519AF7432445B604008374D4 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7422445B604008374D4 /* UseCaseFactory.swift */; };
 		519AF7462445B89C008374D4 /* SignUpComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7452445B89C008374D4 /* SignUpComposer.swift */; };
+		519AF7482445BAE9008374D4 /* SignUpIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7472445BAE9008374D4 /* SignUpIntegrationTests.swift */; };
+		519AF74A2445BBA0008374D4 /* AddAccountSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5766624444AA800EE9DE5 /* AddAccountSpy.swift */; };
+		519AF74B2445BC86008374D4 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
 		51A5765924436DE300EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
 		51A5765A24436DE600EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
 		51A5765D244379F900EE9DE5 /* LoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5765C244379F900EE9DE5 /* LoaderViewModel.swift */; };
@@ -330,6 +333,7 @@
 		519AF7402445A1E1008374D4 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
 		519AF7422445B604008374D4 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
 		519AF7452445B89C008374D4 /* SignUpComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpComposer.swift; sourceTree = "<group>"; };
+		519AF7472445BAE9008374D4 /* SignUpIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpIntegrationTests.swift; sourceTree = "<group>"; };
 		51A5765C244379F900EE9DE5 /* LoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewModel.swift; sourceTree = "<group>"; };
 		51A5765F244447F800EE9DE5 /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
 		51A5766224444A0100EE9DE5 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
@@ -724,6 +728,7 @@
 			isa = PBXGroup;
 			children = (
 				519AF71F2445A018008374D4 /* Info.plist */,
+				519AF7472445BAE9008374D4 /* SignUpIntegrationTests.swift */,
 			);
 			path = MainTests;
 			sourceTree = "<group>";
@@ -743,6 +748,14 @@
 				519AF7452445B89C008374D4 /* SignUpComposer.swift */,
 			);
 			path = Composers;
+			sourceTree = "<group>";
+		};
+		519AF7492445BB7A008374D4 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				51A5766624444AA800EE9DE5 /* AddAccountSpy.swift */,
+			);
+			path = UseCases;
 			sourceTree = "<group>";
 		};
 		51A5765B244379A800EE9DE5 /* ViewModel */ = {
@@ -767,7 +780,6 @@
 			isa = PBXGroup;
 			children = (
 				51A5766224444A0100EE9DE5 /* AlertViewSpy.swift */,
-				51A5766624444AA800EE9DE5 /* AddAccountSpy.swift */,
 				51A5766824444AD400EE9DE5 /* LoaderViewSpy.swift */,
 			);
 			path = ViewModelSpy;
@@ -911,6 +923,7 @@
 			isa = PBXGroup;
 			children = (
 				51AD2C73244314B500680321 /* Info.plist */,
+				519AF7492445BB7A008374D4 /* UseCases */,
 				51A5766A24444B5D00EE9DE5 /* Validators */,
 				51A57661244449D600EE9DE5 /* ViewModelSpy */,
 				51A5766B24444B7300EE9DE5 /* Presenter */,
@@ -1277,6 +1290,7 @@
 					};
 					519AF7182445A018008374D4 = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 						TestTargetID = 519AF7032445A015008374D4;
 					};
 					51A5767024444D1000EE9DE5 = {
@@ -1524,6 +1538,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				519AF74A2445BBA0008374D4 /* AddAccountSpy.swift in Sources */,
+				519AF74B2445BC86008374D4 /* Test+CheckMemoryLeak.swift in Sources */,
+				519AF7482445BAE9008374D4 /* SignUpIntegrationTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2216,6 +2233,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5J2G4846S8;
 				INFOPLIST_FILE = MainTests/Info.plist;
@@ -2227,6 +2245,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.alancasasarevalo-gmail.MainTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Main.app/Main";
@@ -2238,6 +2257,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5J2G4846S8;
 				INFOPLIST_FILE = MainTests/Info.plist;
