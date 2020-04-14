@@ -12,7 +12,7 @@ import Infra
 
 public class UseCaseFactory {
     
-    private static let apiBasicUrl = "https://clean-node-api.herokuapp.com/api/"
+    private static let apiBasicUrl = EnviromentHelper.variable(keyToAcces: .apiBaseUrl)
     
     static func remoteAddAccount () -> RemoteAddAccount {
         let remoteAddAccount = RemoteAddAccount(urlToCall: makeUrlWith(path: "signup"), httpClient: httpClient())
