@@ -58,7 +58,9 @@
 		519AF7372445A156008374D4 /* UI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 51A5767124444D1000EE9DE5 /* UI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		519AF73A2445A156008374D4 /* Validation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 511A193F2444ED100019BFE6 /* Validation.framework */; };
 		519AF73B2445A156008374D4 /* Validation.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 511A193F2444ED100019BFE6 /* Validation.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		519AF7412445A1E1008374D4 /* SingUpFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7402445A1E1008374D4 /* SingUpFactory.swift */; };
+		519AF7412445A1E1008374D4 /* ControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7402445A1E1008374D4 /* ControllerFactory.swift */; };
+		519AF7432445B604008374D4 /* UseCaseFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7422445B604008374D4 /* UseCaseFactory.swift */; };
+		519AF7462445B89C008374D4 /* SignUpComposer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7452445B89C008374D4 /* SignUpComposer.swift */; };
 		51A5765924436DE300EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
 		51A5765A24436DE600EE9DE5 /* Test+CheckMemoryLeak.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5108D1CF243E221100CD1595 /* Test+CheckMemoryLeak.swift */; };
 		51A5765D244379F900EE9DE5 /* LoaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A5765C244379F900EE9DE5 /* LoaderViewModel.swift */; };
@@ -325,7 +327,9 @@
 		519AF7142445A017008374D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		519AF7192445A018008374D4 /* MainTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MainTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		519AF71F2445A018008374D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		519AF7402445A1E1008374D4 /* SingUpFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingUpFactory.swift; sourceTree = "<group>"; };
+		519AF7402445A1E1008374D4 /* ControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerFactory.swift; sourceTree = "<group>"; };
+		519AF7422445B604008374D4 /* UseCaseFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseFactory.swift; sourceTree = "<group>"; };
+		519AF7452445B89C008374D4 /* SignUpComposer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpComposer.swift; sourceTree = "<group>"; };
 		51A5765C244379F900EE9DE5 /* LoaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoaderViewModel.swift; sourceTree = "<group>"; };
 		51A5765F244447F800EE9DE5 /* SignUpMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpMapper.swift; sourceTree = "<group>"; };
 		51A5766224444A0100EE9DE5 /* AlertViewSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewSpy.swift; sourceTree = "<group>"; };
@@ -707,6 +711,7 @@
 			children = (
 				519AF7062445A015008374D4 /* AppDelegate.swift */,
 				519AF7082445A016008374D4 /* SceneDelegate.swift */,
+				519AF7442445B880008374D4 /* Composers */,
 				519AF73F2445A1D1008374D4 /* Factory */,
 				519AF70F2445A017008374D4 /* Assets.xcassets */,
 				519AF7112445A017008374D4 /* LaunchScreen.storyboard */,
@@ -726,9 +731,18 @@
 		519AF73F2445A1D1008374D4 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
-				519AF7402445A1E1008374D4 /* SingUpFactory.swift */,
+				519AF7402445A1E1008374D4 /* ControllerFactory.swift */,
+				519AF7422445B604008374D4 /* UseCaseFactory.swift */,
 			);
 			path = Factory;
+			sourceTree = "<group>";
+		};
+		519AF7442445B880008374D4 /* Composers */ = {
+			isa = PBXGroup;
+			children = (
+				519AF7452445B89C008374D4 /* SignUpComposer.swift */,
+			);
+			path = Composers;
 			sourceTree = "<group>";
 		};
 		51A5765B244379A800EE9DE5 /* ViewModel */ = {
@@ -1498,9 +1512,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				519AF7412445A1E1008374D4 /* SingUpFactory.swift in Sources */,
+				519AF7432445B604008374D4 /* UseCaseFactory.swift in Sources */,
+				519AF7412445A1E1008374D4 /* ControllerFactory.swift in Sources */,
 				519AF7072445A016008374D4 /* AppDelegate.swift in Sources */,
 				519AF7092445A016008374D4 /* SceneDelegate.swift in Sources */,
+				519AF7462445B89C008374D4 /* SignUpComposer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
