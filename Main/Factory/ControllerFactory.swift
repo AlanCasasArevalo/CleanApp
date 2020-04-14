@@ -20,12 +20,32 @@ class ControllerFactory {
     }
     
     static func presenter (viewController: SignUpViewController, addAccount: AddAccountProtocol) -> SignUpPresenter {
-        let presenter = SignUpPresenter(alertView: viewController, emailValidator: validator(), addAccount: addAccount, loaderView: viewController)
+        let presenter = SignUpPresenter(alertView: WeakVarProxy(viewController), emailValidator: validator(), addAccount: addAccount, loaderView: WeakVarProxy(viewController))
         return presenter
     }
     
     static func validator () -> EmailValidatorAdapter {
         let validator = EmailValidatorAdapter()
         return validator
+    }
+}
+
+class WeakVarProxy<T: AnyObject> {
+    private weak var instance: T?
+    
+    init(_ instance: T) {
+        self.instance = instance
+    }
+}
+
+extension WeakVarProxy: AlertViewProtocol where T: AlertViewProtocol {
+    func showMessage(viewModel: AlertViewModel) {
+        instance?.showMessage(viewModel: viewModel)
+    }
+}
+
+extension WeakVarProxy: LoaderViewProtocol where T: LoaderViewProtocol {
+    func showLoader(viewModel: LoaderViewModel) {
+        instance?.showLoader(viewModel: viewModel)
     }
 }
