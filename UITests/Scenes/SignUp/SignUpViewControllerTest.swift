@@ -19,9 +19,15 @@ class SignUpViewControllerTest: XCTestCase {
         sut.endAppearanceTransition()
     }
     
-    func test_loading_is_hidden_on_start () {
+    func test_loading_is_animating_on_start () {
         let sut = makeSut()
         XCTAssertEqual(sut.loadingIndicator?.isAnimating, false)
+        sut.endAppearanceTransition()
+    }
+    
+    func test_loading_is_hidden_on_start () {
+        let sut = makeSut()
+        XCTAssertEqual(sut.loadingIndicator?.isHidden, true)
         sut.endAppearanceTransition()
     }
     
