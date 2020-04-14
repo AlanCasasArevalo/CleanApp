@@ -16,15 +16,16 @@ class SignUpIntegrationTests: XCTestCase {
         checkMemoryLeak(for: sut)
     }
     
-    func test_enviroment_correct_api_base_url () {
+    func test_enviroment_correct_debug_api_base_url () {
         let valueToTest = getValue(for: EnviromentHelper.EnviromentVariable.apiBaseUrl.rawValue)
-        #if DEBUG
         XCTAssertNotNil(valueToTest)
         XCTAssertEqual(valueToTest, "http://localhost:5050/api")
-        #elseif RELEASE
+    }
+    
+    func test_enviroment_correct_release_api_base_url () {
+        let valueToTest = getValue(for: EnviromentHelper.EnviromentVariable.apiBaseUrl.rawValue)
         XCTAssertNotNil(valueToTest)
-        XCTAssertEqual(valueToTest, "http://localhost:5050/api")
-        #endif
+        XCTAssertEqual(valueToTest, "https://clean-node-api.herokuapp.com/api")
     }
     
     func getValue(for key: String) -> String? {
