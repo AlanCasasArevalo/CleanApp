@@ -9,7 +9,6 @@
 import XCTest
 import Presentation
 import Domain
-import Data
 
 class SignUpPresenterTests: XCTestCase {
 
@@ -159,10 +158,5 @@ extension SignUpPresenterTests {
         let sut = SignUpPresenter(alertView: alertView, emailValidator: emailValidator, addAccount: addAccount, loaderView: loaderView)
         checkMemoryLeak(for: sut, file: file, line: line)
         return sut
-    }
-    
-    func makeSignUpViewModel (name: String? = "any_name", email: String? = "valid_email@gmail.com", password: String? = "any_password", passwordConfirmation: String? = "any_password") -> SignUpViewModel {
-        let signUpViewModel = SignUpViewModel(name: name, email: email, password: password, passwordConfirmation: passwordConfirmation)
-        return signUpViewModel
-    }
+    }    
 }

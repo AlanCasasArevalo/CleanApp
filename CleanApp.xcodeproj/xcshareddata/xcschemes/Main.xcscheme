@@ -29,11 +29,10 @@
       shouldUseLaunchSchemeArgsEnv = "NO">
       <Testables>
          <TestableReference
-            skipped = "NO"
-            testExecutionOrdering = "random">
+            skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "519AF7182445A018008374D4"
+               BlueprintIdentifier = "519DF9ED2446E84F00EE34B5"
                BuildableName = "MainTests.xctest"
                BlueprintName = "MainTests"
                ReferencedContainer = "container:CleanApp.xcodeproj">
