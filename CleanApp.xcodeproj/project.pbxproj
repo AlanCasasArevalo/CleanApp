@@ -43,6 +43,7 @@
 		51595627243DE24E00721BFA /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595626243DE24E00721BFA /* Model.swift */; };
 		51595629243DE39400721BFA /* RemoteAddAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51595628243DE39400721BFA /* RemoteAddAccount.swift */; };
 		5159562B243DE3EC00721BFA /* HttpPostClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5159562A243DE3EC00721BFA /* HttpPostClientProtocol.swift */; };
+		51869BF22446F25000FEE726 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51869BF12446F25000FEE726 /* MainQueueDispatchDecorator.swift */; };
 		519AF6FF2444F4B0008374D4 /* EmailValidatorAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF6FE2444F4B0008374D4 /* EmailValidatorAdapter.swift */; };
 		519AF7072445A016008374D4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7062445A015008374D4 /* AppDelegate.swift */; };
 		519AF7092445A016008374D4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 519AF7082445A016008374D4 /* SceneDelegate.swift */; };
@@ -354,6 +355,7 @@
 		51595626243DE24E00721BFA /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		51595628243DE39400721BFA /* RemoteAddAccount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteAddAccount.swift; sourceTree = "<group>"; };
 		5159562A243DE3EC00721BFA /* HttpPostClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpPostClientProtocol.swift; sourceTree = "<group>"; };
+		51869BF12446F25000FEE726 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 		519AF6FE2444F4B0008374D4 /* EmailValidatorAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorAdapter.swift; sourceTree = "<group>"; };
 		519AF7042445A015008374D4 /* Main.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Main.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		519AF7062445A015008374D4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -769,6 +771,7 @@
 				519AF7142445A017008374D4 /* Info.plist */,
 				519AF7062445A015008374D4 /* AppDelegate.swift */,
 				519AF7082445A016008374D4 /* SceneDelegate.swift */,
+				51869BF12446F25000FEE726 /* MainQueueDispatchDecorator.swift */,
 				513B35482445FF71002FE790 /* Env */,
 				513B35452445C2D1002FE790 /* Proxies */,
 				519AF7442445B880008374D4 /* Composers */,
@@ -1583,6 +1586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				513B354C244600C4002FE790 /* EnviromentHelper.swift in Sources */,
+				51869BF22446F25000FEE726 /* MainQueueDispatchDecorator.swift in Sources */,
 				519AF7432445B604008374D4 /* UseCaseFactory.swift in Sources */,
 				519AF7072445A016008374D4 /* AppDelegate.swift in Sources */,
 				519AF7092445A016008374D4 /* SceneDelegate.swift in Sources */,
