@@ -9,7 +9,7 @@
 import XCTest
 import Main
 
-class SignUpIntegrationTests: XCTestCase {
+class SignUpComposerTests: XCTestCase {
 
     func test_memory_leak_integration () {
         let sut = SignUpComposer.composeControllerWith(addAccount: AddAccountSpy())
@@ -27,9 +27,11 @@ class SignUpIntegrationTests: XCTestCase {
         XCTAssertNotNil(valueToTest)
         XCTAssertEqual(valueToTest, "https://clean-node-api.herokuapp.com/api")
     }
-    
+
+}
+
+extension SignUpComposerTests {    
     func getValue(for key: String) -> String? {
         return Bundle.main.infoDictionary?[key] as? String
     }
-
 }
