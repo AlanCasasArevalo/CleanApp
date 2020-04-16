@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Domain
 import Data
 import Infra
 
@@ -14,9 +15,9 @@ public class UseCaseFactory {
     
     private static let apiBasicUrl = EnviromentHelper.variable(keyToAcces: .apiBaseUrl)
     
-    static func remoteAddAccount () -> RemoteAddAccount {
+    static func remoteAddAccount () -> AddAccountProtocol {
         let remoteAddAccount = RemoteAddAccount(urlToCall: makeUrlWith(path: "signup"), httpClient: httpClient())
-        return remoteAddAccount
+        return MainQueueDispatchDecorator(remoteAddAccount)
     }
     
     static func httpClient () -> AlamofireAdapter {
@@ -29,3 +30,4 @@ public class UseCaseFactory {
         return url
     }
 }
+
