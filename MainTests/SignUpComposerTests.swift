@@ -10,6 +10,7 @@ import XCTest
 import Main
 import UI
 import Presentation
+import Validation
 
 class SignUpComposerTests: XCTestCase {
     
@@ -41,6 +42,19 @@ class SignUpComposerTests: XCTestCase {
         }
         wait(for: [expect], timeout: 2)
     }
+    
+    
+    func test_signUp_compose_with_correct_validations () {
+        let validations = SignUpComposer.makeValidation()
+        XCTAssertEqual(validations[0] as! RequiredFieldValidation, RequiredFieldValidation(fieldName: "name", fieldLabel: "Name"))
+        XCTAssertEqual(validations[1] as! RequiredFieldValidation, RequiredFieldValidation(fieldName: "email", fieldLabel: "Email"))
+        XCTAssertEqual(validations[2] as! EmailValidation, EmailValidation(fieldName: "email", fieldLabel: "Email", emailValidator: EmailValidatorSpy()))
+        XCTAssertEqual(validations[3] as! RequiredFieldValidation, RequiredFieldValidation(fieldName: "password", fieldLabel: "Contraseña"))
+        XCTAssertEqual(validations[4] as! RequiredFieldValidation, RequiredFieldValidation(fieldName: "passwordConfirmation", fieldLabel: "Confirmacion de contraseña"))
+        XCTAssertEqual(validations[5] as! CompareFieldValidation, CompareFieldValidation(fieldName: "password", fieldNameToCompare: "passwordConfirmation", fieldLabel: "Confirmacion de contraseña"))
+
+    }
+    
 }
 
 extension SignUpComposerTests {

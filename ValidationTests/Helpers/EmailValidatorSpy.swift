@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Presentation
+import Validation
 
 class EmailValidatorSpy: EmailValidatorProtocol {
      var isValid = true
@@ -19,6 +19,6 @@ class EmailValidatorSpy: EmailValidatorProtocol {
      }
      
      func simulateInvalidEmail () {
-         self.isValid = false
+         isValid = false
      }
  }
